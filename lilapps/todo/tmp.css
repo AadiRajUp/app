@@ -1,0 +1,17 @@
+#tmpdiv {
+  margin: 2px;
+  border: 1px solid black;
+  width: 100%;
+  height: 7dvh;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+p {
+  font-size: 2rem;
+  margin: 2px;
+}
+#tmpbtn {
+  background-color: red;
+  width: 20%;
+}

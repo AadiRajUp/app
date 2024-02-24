@@ -1,162 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <title>Document</title>
-  <style>
-    body {
-      background-color: black;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-
-    }
-
-    #calc {
-      border: solid;
-      border-color: white;
-      border-radius: 15px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-    }
-
-    .keypad button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 20px;
-      width: 20px;
-      padding: 30px;
-      border-radius: 20px;
-      margin: 3px;
-
-    }
-
-    #displaybox {
-      overflow: none;
-      color: white;
-      background-color: rgba(155, 142, 142, 0.779);
-      width: 270px;
-      height: 60px;
-      border-radius: 100px;
-      text-align: right;
-      padding-top: 15px;
-      padding: 12px;
-      margin: 15px 5px;
-      font-size: 30px;
-    }
-
-    .desc {
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      color: white;
-      border: solid;
-      border-color: white;
-      margin: 5px 0px 5px 0px;
-    }
-
-    .desc p {
-      padding: 5px 15px;
-      font-family: 'Courier New', Courier, monospace;
-    }
-
-    .keypad {
-      display: flex;
-      flex-direction: column;
-      margin: 15px;
-    }
-    .keypad div{
-      display: flex;
-
-    }
-
-    .sym {
-      background-color: rgb(255, 255, 0);
-      border-width: 2px;
-      border-color: white;
-    }
-    .acHolder{
-      align-self: flex-end;
-    }
-    .sym:hover{
-      background-color: white;
-      color: black;
-    }
-  </style>
-</head>
-
-<body>
-  <div id="calc">
-    <div id="displaybox"></div>
-    <div class="desc">
-      <p>Brought to you by Aadi</p>
-    </div>
-    <div class="keypad">
-      <div class="acHolder">
-        <button class="sym" onclick="disp='';erase();">AC</button>
-      </div>
-      <div>
-        <button class="num" onclick="addtodisplay(9);">9</button>
-        <button class="num" onclick="addtodisplay(8);">8</button>
-        <button class="num" onclick="addtodisplay(7);">7</button>
-        <button class="sym" onclick="addtodisplay('/');">/</button>
-      </div>
-      <div>
-        <button class="num" onclick="addtodisplay(6);">6</button>
-        <button class="num" onclick="addtodisplay(5);">5</button>
-        <button class="num" onclick="addtodisplay(4);">4</button>
-        <button class="sym" onclick="addtodisplay('*');">X</button>
-      </div>
-      <div>
-        <button class="num" onclick="addtodisplay(3);">3</button>
-        <button class="num" onclick="addtodisplay(2);">2</button>
-        <button class="num" onclick="addtodisplay(1);">1</button>
-        <button class="sym" onclick="addtodisplay('-');">-</button>
-      </div>
-      <div>
-        <button class="num" onclick="addtodisplay(0);">0</button>
-        <button class="sym" onclick="eql();">=</button>
-        <button class="sym" onclick="addtodisplay('.')">.</button>
-        <button class="sym" onclick="addtodisplay('+');">+</button>
-      </div>
-    </div>
-  </div>
-  
-  <script>
-    let disp = '';
-    function eql()//executes after pressing =
-    {
-      const result = eval(disp);//eval fn evaluates the eqn in a string to give int output
-      if (typeof result !== "number") {//just a bit of error handling
-        alert("Error occured please try again");
+  <head>
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
       }
-      else {
-        disp = result.toString();
+
+      #calc {
+        border: solid;
+        border-color: white;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .keypad button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 20px;
+        width: 20px;
+        padding: 30px;
+        border-radius: 20px;
+        margin: 3px;
+      }
+
+      #displaybox {
+        overflow: none;
+        color: white;
+        background-color: rgba(155, 142, 142, 0.779);
+        width: 270px;
+        height: 60px;
+        border-radius: 100px;
+        text-align: right;
+        padding-top: 15px;
+        padding: 12px;
+        margin: 15px 5px;
+        font-size: 30px;
+      }
+
+      .desc {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        color: white;
+        border: solid;
+        border-color: white;
+        margin: 5px 0px 5px 0px;
+      }
+
+      .desc p {
+        padding: 5px 15px;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      .keypad {
+        display: flex;
+        flex-direction: column;
+        margin: 15px;
+      }
+      .keypad div {
+        display: flex;
+      }
+
+      .sym {
+        background-color: rgb(255, 255, 0);
+        border-width: 2px;
+        border-color: white;
+      }
+      .acHolder {
+        align-self: flex-end;
+      }
+      .sym:hover {
+        background-color: white;
+        color: black;
+      }
+      .exit {
+        color: white;
+        background-color: red;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="calc">
+      <div id="displaybox"></div>
+      <div class="desc">
+        <p>Brought to you by Aadi</p>
+      </div>
+      <div class="keypad">
+        <div class="acHolder">
+          <button class="sym" onclick="disp='';erase();">AC</button>
+        </div>
+        <div>
+          <button class="num" onclick="addtodisplay(9);">9</button>
+          <button class="num" onclick="addtodisplay(8);">8</button>
+          <button class="num" onclick="addtodisplay(7);">7</button>
+          <button class="sym" onclick="addtodisplay('/');">/</button>
+        </div>
+        <div>
+          <button class="num" onclick="addtodisplay(6);">6</button>
+          <button class="num" onclick="addtodisplay(5);">5</button>
+          <button class="num" onclick="addtodisplay(4);">4</button>
+          <button class="sym" onclick="addtodisplay('*');">X</button>
+        </div>
+        <div>
+          <button class="num" onclick="addtodisplay(3);">3</button>
+          <button class="num" onclick="addtodisplay(2);">2</button>
+          <button class="num" onclick="addtodisplay(1);">1</button>
+          <button class="sym" onclick="addtodisplay('-');">-</button>
+        </div>
+        <div>
+          <button class="num" onclick="addtodisplay(0);">0</button>
+          <button class="sym" onclick="eql();">=</button>
+          <button class="sym" onclick="addtodisplay('.')">.</button>
+          <button class="sym" onclick="addtodisplay('+');">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="exit">Return To Home</div>
+    <script>
+      const exit = document.querySelector(".exit");
+      exit.addEventListener("click", () => {
+        window.location.href = "../more.html";
+      });
+      let disp = "";
+      function eql() {
+        //executes after pressing =
+        const result = eval(disp); //eval fn evaluates the eqn in a string to give int output
+        if (typeof result !== "number") {
+          //just a bit of error handling
+          alert("Error occured please try again");
+        } else {
+          disp = result.toString();
+          click();
+        }
+      }
+      function click() {
+        const sound = new Audio();
+        sound.src = "../game/click.mp3";
+        sound.play();
+        //This function is activated after any button is clicked
+        const scrn = document.getElementById("displaybox"); //To my current level of knowledge, scrn pointer jasto bhayo, Asking chat GPT it carries DOM,
+        scrn.innerHTML = disp; //The tag having id displaybox is having its inner text changed to whatever is in the display
+      }
+      function addtodisplay(char) {
+        //executes immediately afer any almost any button is pressed to form an equation
+        disp += char; //add the button immediately in the eqn
         click();
       }
-    }
-    function click() {
-      const sound = new Audio();
-      sound.src = "click.wav";
-      sound.play();
-      //This function is activated after any button is clicked
-      const scrn = document.getElementById("displaybox");//To my current level of knowledge, scrn pointer jasto bhayo, Asking chat GPT it carries DOM,
-      scrn.innerHTML = disp;  //The tag having id displaybox is having its inner text changed to whatever is in the display
-    }
-    function addtodisplay(char) {//executes immediately afer any almost any button is pressed to form an equation
-      disp += char;//add the button immediately in the eqn 
-      click();
-    }
-    function erase() {
-      const scrn = document.getElementById("displaybox");
-      scrn.innerHTML = '';
-    }
-  </script>
-</body>
-
+      function erase() {
+        const scrn = document.getElementById("displaybox");
+        scrn.innerHTML = "";
+      }
+    </script>
+  </body>
 </html>

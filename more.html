@@ -20,9 +20,7 @@
         font-size: 3rem;
         color: aliceblue;
       }
-      .more-container {
-        height: 100px;
-      }
+
       div[class="card"] {
         border: 2px double rgb(150, 15, 15);
         border-radius: 5px;
@@ -34,7 +32,8 @@
         margin: 10%;
         width: 80%;
       }
-      #gameContainer {
+      #gameContainer,
+      #appContainer {
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
@@ -78,7 +77,20 @@
         </div>
       </div>
       <h1 id="apps" class="liner">Apps!</h1>
-      <div id="appContainer" class="more-container"></div>
+      <div id="appContainer" class="more-container">
+        <div class="card">
+          <a href="./lilapps/calculator.html">
+            <img src="./image/bigaadi.jpeg" alt="Calc" />
+            <h2>Calculator</h2>
+          </a>
+        </div>
+        <div class="card">
+          <a href="./lilapps/tictactoe.html">
+            <img src="./image/bigaadi.jpeg" alt="tictactoe" />
+            <h2>Tic-Tac-Toe</h2>
+          </a>
+        </div>
+      </div>
     </main>
   </body>
 </html>

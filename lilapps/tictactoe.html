@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .root {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .holder {
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        grid-template-columns: auto auto auto;
+        grid-gap: 5px;
+      }
+      .boxes {
+        width: 15vh;
+        height: 15vh;
+        background-color: aqua;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+      }
+      .message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5rem;
+        height: 5vh;
+        width: 100%;
+        color: white;
+      }
+      #exit {
+        background-color: red;
+        font-size: 2.5rem;
+        color: white;
+        margin: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root" id="root">
+      <div class="message" id="message"></div>
+      <div class="holder" id="holder">
+        <div class="boxes" id="b1"></div>
+        <div class="boxes" id="b2"></div>
+        <div class="boxes" id="b3"></div>
+        <div class="boxes" id="b4"></div>
+        <div class="boxes" id="b5"></div>
+        <div class="boxes" id="b6"></div>
+        <div class="boxes" id="b7"></div>
+        <div class="boxes" id="b8"></div>
+        <div class="boxes" id="b9"></div>
+      </div>
+    </div>
+    <div id="exit">Exit</div>
+    <script>
+      const exit = document.getElementById("exit");
+      exit.addEventListener("click", () => {
+        window.location.href = "../more.html";
+      });
+      let b = [];
+      for (let j = 0; j < 9; j++) {
+        b[j] = document.getElementById(`b${j + 1}`);
+      }
+      let bool = true;
+      const a = document.querySelectorAll(".boxes");
+      a.forEach((p) => {
+        p.addEventListener("click", function onClick() {
+          const sound = new Audio();
+          sound.src = "../game/click.mp3";
+          sound.play();
+          if (!p.innerHTML.trim()) {
+            p.innerHTML = bool ? "X" : "O";
+            bool = !bool;
+            check(p);
+          }
+          p.removeEventListener("click", onClick);
+        });
+      });
+      let nulla = b[0].innerHTML;
+      function check(p) {
+        [0, 1, 2].forEach((i) => {
+          if (
+            b[i].innerHTML === b[i + 3].innerHTML &&
+            b[i].innerHTML === b[i + 6].innerHTML &&
+            b[i].innerHTML !== nulla
+          ) {
+            // column linear
+            document.getElementById(
+              "message"
+            ).innerHTML = `The Winner is ${b[i].innerHTML}`;
+          }
+        });
+        [0, 3, 6].forEach((i) => {
+          if (
+            b[i].innerHTML === b[i + 1].innerHTML &&
+            b[i].innerHTML === b[i + 2].innerHTML &&
+            b[i].innerHTML !== nulla
+          ) {
+            // linear row
+            document.getElementById(
+              "message"
+            ).innerHTML = `The Winner is ${b[i].innerHTML}`;
+          }
+        });
+        if (
+          ((b[0].innerHTML === b[4].innerHTML &&
+            b[0].innerHTML === b[8].innerHTML) ||
+            (b[2].innerHTML === b[4].innerHTML &&
+              b[2].innerHTML === b[6].innerHTML)) &&
+          b[4].innerHTML !== nulla
+        ) {
+          // diagonals
+          document.getElementById(
+            "message"
+          ).innerHTML = `The Winner is ${b[i].innerHTML}`;
+        }
+      }
+    </script>
+  </body>
+</html>
