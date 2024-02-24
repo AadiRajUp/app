@@ -1,0 +1,129 @@
+/* * {
+  padding: 0;
+  margin: 0;
+} */
+
+nav * {
+  color: antiquewhite;
+}
+body {
+  overflow: none;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+nav {
+  overflow: none;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav h1 {
+  margin-inline: 5dvh;
+}
+
+ul {
+  width: 50%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+li {
+  display: flex;
+  width: 15dvw;
+  height: 8dvh;
+  justify-content: center;
+  align-items: center;
+}
+
+header * {
+  color: transparent;
+}
+header:hover {
+  * {
+    animation: fadein 1s ease-in-out 1;
+    animation-fill-mode: forwards;
+  }
+  li:hover {
+    animation: top 0.3s ease-out 1;
+    animation-fill-mode: forwards;
+    /* animation: beat 1s linear infinite; */
+  }
+}
+main:hover {
+  header * {
+    animation: fadeout 1s ease-in-out 1;
+    animation-fill-mode: forwards;
+  }
+}
+@keyframes top {
+  form {
+    display: flex;
+    width: 15dvw;
+    height: 9dvh;
+    justify-content: center;
+    align-items: center;
+  }
+  to {
+    cursor: pointer;
+    height: 7dvh;
+    border: 0.5dvh solid whitesmoke;
+    border-radius: 4dvh;
+    background-color: chocolate;
+    color: white;
+    font-weight: 900;
+    font-size: 2rem;
+  }
+}
+@keyframes fadein {
+  form {
+    color: transparent;
+  }
+  to {
+    color: antiquewhite;
+  }
+}
+@keyframes fadeout {
+  from {
+    color: antiquewhite;
+  }
+  to {
+    color: transparent;
+  }
+}
+/* @keyframes beat {
+  0% {
+    cursor: pointer;
+    height: 7dvh;
+    border: 0.5dvh solid whitesmoke;
+    border-radius: 4dvh;
+    background-color: chocolate;
+    color: white;
+    font-weight: 900;
+    font-size: 1.5rem;
+  }
+  50% {
+    cursor: pointer;
+    height: 7dvh;
+    border: 0.5dvh solid whitesmoke;
+    border-radius: 4dvh;
+    background-color: chocolate;
+    color: white;
+    font-weight: 900;
+    font-size: 1.7rem;
+  }
+  100% {
+    cursor: pointer;
+    height: 7dvh;
+    border: 0.5dvh solid whitesmoke;
+    border-radius: 4dvh;
+    background-color: chocolate;
+    color: white;
+    font-weight: 900;
+    font-size: 1.3rem;
+  }
+} */

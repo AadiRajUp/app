@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<html lang="en">
+  <head>
+    <title>Sign Up!</title>
+    <link rel="stylesheet" href="../nav.css" />
+    <style>
+      body {
+        color: wheat;
+        background: rgb(239, 1, 16);
+        background: linear-gradient(
+          45deg,
+          rgba(239, 1, 16, 1) 5%,
+          rgba(202, 34, 121, 1) 40%,
+          rgba(131, 97, 168, 1) 67%,
+          rgba(0, 212, 255, 1) 93%,
+          rgba(0, 212, 255, 1) 93%
+        );
+        height: 100dvh;
+        width: 100%;
+      }
+      main {
+        display: grid;
+        place-content: center;
+      }
+
+      form {
+        border: 0.1dvh solid white;
+        display: flex;
+        flex-direction: column;
+      }
+
+      form > div {
+        margin: 2dvh;
+      }
+
+      div.sex {
+        display: flex;
+      }
+
+      div.btns > button {
+        margin: 1dvh;
+      }
+
+      form > h1 {
+        width: 100%;
+        display: grid;
+        place-content: center;
+      }
+
+      #tempobj {
+        color: rgb(114, 14, 14);
+      }
+      a {
+        all: unset;
+      }
+    </style>
+  </head>
+
+  <body id="123tmp">
+    <header>
+      <nav>
+        <div class="logo-holder">
+          <h1><strong>Aadi's World</strong></h1>
+        </div>
+        <ul>
+          <li><a href="../home.html">Home</a></li>
+          <li><a href="../more.html">More</a></li>
+          <li><a href="./login.html">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <p id="tempobj"></p>
+      <form method="post" action="./backend.php" onsubmit="return validate();">
+        <h1>Sign Up!</h1>
+        <div id="fnameholder">
+          <label for="fname">First Name: </label>
+          <input type="text" name="fname" id="fname" />
+        </div>
+        <div class="age">
+          <label for="age">Age: </label>
+          <input type="number" name="age" id="age" />
+        </div>
+        <div class="sex">
+          <label for="sex">Sex: </label>
+          <div>
+            <label for="male">
+              <input type="radio" name="sex" id="male" value="male" />
+              Male
+            </label>
+            <br />
+            <label for="female">
+              <input type="radio" name="sex" id="female" value="female" />
+              Female
+            </label>
+          </div>
+        </div>
+        <div class="username">
+          <label for="uname">Username: </label>
+          <input type="text" name="uname" id="uname" placeholder="aadi69" />
+        </div>
+        <div class="pass">
+          <label for="pass">Password: </label>
+          <input type="password" name="pass" id="pass" />
+        </div>
+        <div class="cpass">
+          <label for="cpass">Confirm Password: </label>
+          <input type="password" name="cpass" id="cpass" />
+        </div>
+        <div class="btns">
+          <button type="submit">Sign Up!</button>
+        </div>
+      </form>
+    </main>
+
+    <script>
+      function validate() {
+        return vname() && vage() && vuname() && vpass() && vcpass() && clrerr();
+      }
+      async function vname() {
+        if (document.getElementById("fname").value === "") {
+          document.getElementById("tempobj").remove();
+          const temp = document.getElementById("fnameholder");
+          temp.innerHTML += '<p id="tempobj">Name cannot be empty</p>';
+          return false;
+        }
+        return true;
+      }
+      async function vage() {
+        if (document.getElementById("age").value <= 18) {
+          alert("You must be over 18 years of age");
+          return false;
+        }
+        return true;
+      }
+      function vuname() {
+        if (document.getElementById("uname").value === "") {
+          alert("User name cannot be empty lad!");
+          return false;
+        }
+        return true;
+      }
+      function vpass() {
+        if (
+          document.getElementById("pass").value === "" ||
+          document.getElementById("cpass").value === ""
+        ) {
+          alert("passwords cannot be empty lad!");
+          return false;
+        }
+        return true;
+      }
+      function vcpass() {
+        if (
+          document.getElementById("pass").value !==
+          document.getElementById("cpass").value
+        ) {
+          alert("passwords don't match");
+          return false;
+        }
+        return true;
+      }
+      function clrerr() {
+        URL("./aadi.html");
+        return true;
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.querySelector("form");
+        form.onsubmit = () => {
+          return validate();
+        };
+      });
+    </script>
+  </body>
+</html>

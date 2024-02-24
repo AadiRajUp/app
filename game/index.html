@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aim Dev</title>
+    <link rel="icon" type="image/x-icon" href="./terrorist.png" />
+    <style>
+      body {
+        margin: 0;
+      }
+      #root {
+        position: absolute;
+        width: 100%;
+        height: 100dvh;
+        background-color: gray;
+      }
+
+      .ball {
+        position: absolute;
+        background-color: red;
+        height: 5dvh;
+        width: 5dvh;
+        border-radius: 5dvh;
+      }
+      #scoreBoard {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        color: rgba(235, 197, 197, 0.232);
+        user-select: none;
+      }
+      #score {
+        height: fit-content;
+        font-size: 15rem;
+        margin: 0;
+        padding: 0;
+      }
+      #root1 {
+        background-color: black;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0.9;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      #root1 * {
+        margin: 0;
+        padding: 0;
+        color: beige;
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+        text-align: justify;
+      }
+      #tempH1 {
+        font-size: 7rem;
+        animation: beat 2s linear infinite;
+      }
+      #tempH3 {
+        font-size: 5rem;
+      }
+      #tempBtn {
+        background-color: transparent;
+        font-size: 3rem;
+        width: fit-content;
+        height: fit-content;
+      }
+      @keyframes beat {
+        from {
+          font-size: 700%;
+        }
+        to {
+          font-size: 600%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div id="scoreBoard">
+        <h1 id="score">0</h1>
+        <h1 id="time">99</h1>
+      </div>
+      <img
+        src="./terrorist.png"
+        alt="err 404 image not found"
+        id="ball"
+        class="ball"
+      />
+
+      <!-- <div id="ball2" class="ball"></div> -->
+    </div>
+    <script>
+      const root = document.getElementById("root");
+      const ball = document.getElementById("ball");
+      const time = document.getElementById("time");
+      const maxX = root.clientWidth;
+      const maxY = root.clientHeight;
+      const sound = new Audio();
+      const score = document.getElementById("score");
+      sound.src = "./click.mp3";
+      let totalTime = 5;
+      let countPoints = 0;
+      let heighestScore = 0;
+      if (localStorage.getItem("heighestScore")) {
+        heighestScore = parseInt(localStorage.getItem("heighestScore"));
+      }
+
+      start();
+      function start() {
+        /*   setInterval(() => {
+        let xPos, yPos;
+        //random pos generator
+        xPos = Math.random() * (maxX - ball.clientWidth);
+        yPos = Math.random() * (maxY - ball.clientHeight);
+        ball.style.left = `${xPos}px`;
+        ball.style.top = `${yPos}px`;
+      }, 1000); */
+        ball.addEventListener("click", onClick);
+        timeKeeper();
+        function onClick() {
+          console.log("onClick");
+          countPoints++;
+          score.innerHTML = countPoints;
+          sound.play();
+          randomPos();
+        }
+        function randomPos() {
+          let xPos, yPos;
+          xPos = Math.random() * (maxX - ball.clientWidth);
+          yPos = Math.random() * (maxY - ball.clientHeight);
+          ball.style.left = `${xPos}px`;
+          ball.style.top = `${yPos}px`;
+        }
+        function timeKeeper() {
+          console.log("helo");
+          const tempInterval = setInterval(() => {
+            totalTime--;
+            time.innerHTML = totalTime;
+            totalTime || (clearInterval(tempInterval), displayWinPage());
+          }, 1000);
+        }
+        function displayWinPage() {
+          let tempMsg;
+          heighestScore < countPoints
+            ? ((tempMsg = "NEW HEIGHEST SCORE!"),
+              localStorage.setItem("heighestScore", countPoints))
+            : (tempMsg = "YOU LOST");
+          let winPage = `
+            <div id="root1">
+            <h1 id="tempH1">${tempMsg}</h1>
+            <h3 id="tempH3">Score : ${countPoints}</h3>
+            <div class="btn"><button id="tempBtn" onclick="restartGame();">Try Again</button><button id="tempBtn" onclick='../more.html'><a style="all:unset;" href="../more.html">Exit</a><button></div>
+            </div>`;
+          document.body.innerHTML += winPage;
+        }
+      }
+      function restartGame() {
+        location.reload();
+      }
+    </script>
+  </body>
+</html>
+
+<!-- //ball2
+        /* xPos = Math.random() * (maxX - ball2.clientWidth);
+        yPos = Math.random() * (maxY - ball2.clientHeight);
+        ball2.style.left = `${xPos}px`;
+        ball2.style.top = `${yPos}px`;
+
+        console.log("hello"); */ -->

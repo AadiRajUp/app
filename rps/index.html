@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        width: 100%;
+        height: 100dvh;
+        margin: 0;
+        background-color: antiquewhite;
+      }
+      #rps-root {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: auto auto;
+
+        gap: 50px;
+        row-gap: 30px;
+        place-content: center;
+      }
+      #rps-player-box,
+      #rps-computer-box {
+        display: grid;
+        place-content: center;
+        overflow: hidden;
+        border: 2px solid black;
+        border-radius: 300px;
+        width: 300px;
+        height: 300px;
+      }
+      p {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 0;
+      }
+      #rps-score-board {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+      #rps-score-board {
+        display: grid;
+        place-content: center;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      #rps-choice-holder {
+        border: 2px solid black;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 20px;
+        place-content: center;
+      }
+      .rps-img-rps {
+        height: 80px;
+        width: 80px;
+        border-radius: 80px;
+      }
+      img {
+        height: 250px;
+        width: 250px;
+      }
+      #rps-exit {
+        display: grid;
+        place-content: center;
+        font-size: 2rem;
+        font-weight: bold;
+        border: 2px solid black;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="rps-root">
+      <div id="rps-score-board"></div>
+      <p>Player</p>
+      <p>Computer</p>
+      <div id="rps-player-box"></div>
+      <div id="rps-computer-box"></div>
+      <div id="rps-choice-holder">
+        <img
+          src="../image/rock.png"
+          alt="ROCK"
+          id="rps-img-r"
+          class="rps-img-rps"
+        />
+        <img
+          src="../image/paper.png"
+          alt="PAPER"
+          id="rps-img-p"
+          class="rps-img-rps"
+        />
+        <img
+          src="../image/scissor.png"
+          alt="SCISSOR"
+          id="rps-img-s"
+          class="rps-img-rps"
+        />
+      </div>
+      <div id="rps-exit">Return To home</div>
+    </div>
+
+    <script>
+      const playerBox = document.getElementById("rps-player-box");
+      const computerBox = document.getElementById("rps-computer-box");
+      const displayBox = document.getElementById("rps-score-board");
+      const rock = document.getElementById("rps-img-r");
+      const paper = document.getElementById("rps-img-p");
+      const scissor = document.getElementById("rps-img-s");
+      const exit = document.getElementById("rps-exit");
+      exit.addEventListener("click", () => {
+        window.location.href = "../more.html";
+      });
+      rock.addEventListener("click", () => onPlay(2));
+      paper.addEventListener("click", () => onPlay(3));
+      scissor.addEventListener("click", () => onPlay(4));
+      function onPlay(player) {
+        let choice = Math.ceil(3 * Math.random()) + 1;
+        switch (choice) {
+          case 2:
+            computerBox.innerHTML =
+              "<img src='../image/rock.png' alt='ROCK' />";
+            break;
+          case 3:
+            computerBox.innerHTML = `<img src="../image/paper.png" alt="PAPER" />`;
+            break;
+          case 4:
+            computerBox.innerHTML = `<img src="../image/scissor.png" alt="SCISSOR" />`;
+
+            break;
+
+          default:
+            break;
+        }
+        switch (player) {
+          case 2:
+            playerBox.innerHTML = "<img src='../image/rock.png' alt='ROCK' />";
+            break;
+          case 3:
+            playerBox.innerHTML = `<img src="../image/paper.png" alt="PAPER" />`;
+            break;
+          case 4:
+            playerBox.innerHTML = `<img src="../image/scissor.png" alt="SCISSOR" />`;
+
+            break;
+
+          default:
+            break;
+        }
+        if (player === choice) {
+          displayBox.innerHTML = "It's a draw"; //draw
+        } else if (
+          (player > choice && player % choice != 0) ||
+          choice % player === 0
+        ) {
+          displayBox.innerHTML = "Player wins";
+        } else {
+          displayBox.innerHTML = "Computer wins";
+        }
+      }
+    </script>
+  </body>
+</html>

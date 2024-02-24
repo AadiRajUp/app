@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="shortcut icon" href="./image/bigaadi.jpeg" type="image/x-icon" />
+    <link rel="stylesheet" href="./nav.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        color: wheat;
+      }
+      body {
+        width: 100%;
+        height: 100dvh;
+        background-color: rgb(4, 35, 54);
+        display: grid;
+        grid-template-rows: 15dvh auto;
+      }
+      main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #root {
+        width: 80dvw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #root h1 {
+        font-size: 3rem;
+        color: rgb(243, 243, 68);
+      }
+      #root p {
+        font-size: larger;
+      }
+      #root > img {
+        width: 40dvh;
+        height: 40dvh;
+        border-radius: 5%;
+      }
+      #intro {
+        width: 50%;
+      }
+      #root button {
+        cursor: pointer;
+        margin-top: 3dvw;
+        background-color: rgb(241, 214, 64);
+        color: white;
+        font-size: x-large;
+        font-weight: 900;
+        min-width: 15dvw;
+        min-height: 8dvh;
+        border-radius: 5dvh;
+      }
+      #root > #intro > button:hover {
+        animation: top 0.3s linear 1;
+        animation-fill-mode: forwards;
+      }
+      a {
+        all: unset;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo-holder">
+          <h1><strong>Aadi's World</strong></h1>
+        </div>
+        <ul>
+          <li><a href="./home.html">Home</a></li>
+          <li><a href="./more.html">More</a></li>
+          <li><a href="./login/login.html">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div id="root">
+        <div id="intro">
+          <h1>About Me!</h1>
+          <br />
+          <p>
+            Hello! My Name is Aaditya Raj Uprety. Currently 16 Years old and
+            studying in
+            <a href="http://www.sxc.edu.np">St. Xavier's College, Maitighar</a>.
+            Some things I am intrested are talking to new people, watching
+            movies and travelling. I hope you have a great time in Aadi's world.
+            YAYYYYYYY!
+          </p>
+          <button>Contact Me!</button>
+        </div>
+        <img src="./image/aadi.jpg" alt="Err 404 Aadi not found" />
+      </div>
+    </main>
+  </body>
+</html>

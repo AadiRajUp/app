@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>More</title>
+    <link rel="stylesheet" href="./nav.css" />
+    <style>
+      body {
+        background-color: rgb(4, 35, 54);
+      }
+      #main-more p {
+        margin: 0;
+        color: wheat;
+      }
+      .liner {
+        margin: 0;
+        height: 60px;
+        background-color: rgb(15, 55, 84);
+        font-size: 3rem;
+        color: aliceblue;
+      }
+      .more-container {
+        height: 100px;
+      }
+      div[class="card"] {
+        border: 2px double rgb(150, 15, 15);
+        border-radius: 5px;
+        width: 200px;
+        height: 100%;
+      }
+      .card img {
+        border-radius: 5px;
+        margin: 10%;
+        width: 80%;
+      }
+      #gameContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      a {
+        all: unset;
+      }
+      .card h2 {
+        text-align: center;
+        color: wheat;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo-holder">
+          <h1><strong>Aadi's World</strong></h1>
+        </div>
+        <ul>
+          <li><a href="./home.html">Home</a></li>
+          <li><a href="./more.html">More</a></li>
+          <li><a href="./login/login.html">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main-more">
+      <h1 id="games" class="liner">Games!</h1>
+      <div id="gameContainer">
+        <div class="card">
+          <a href="./rps/index.html">
+            <img src="./image/rps.png" alt="Rock Paper Scissors" />
+            <h2>RPS</h2>
+          </a>
+        </div>
+        <div class="card">
+          <a href="./game/index.html">
+            <img src="./game/terrorist.png" alt="Shooter" />
+            <h2>Shooter</h2>
+          </a>
+        </div>
+      </div>
+      <h1 id="apps" class="liner">Apps!</h1>
+      <div id="appContainer" class="more-container"></div>
+    </main>
+  </body>
+</html>

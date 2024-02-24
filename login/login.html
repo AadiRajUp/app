@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../nav.css" />
+    <style>
+      * {
+        font-size: 1.2rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      body {
+        color: wheat;
+        background: rgb(239, 1, 16);
+        background: linear-gradient(
+          45deg,
+          rgba(239, 1, 16, 1) 5%,
+          rgba(202, 34, 121, 1) 40%,
+          rgba(131, 97, 168, 1) 67%,
+          rgba(0, 212, 255, 1) 93%,
+          rgba(0, 212, 255, 1) 93%
+        );
+        margin: 0;
+        width: 100%;
+        height: 100dvh;
+      }
+      main {
+        display: grid;
+        align-content: center;
+        justify-items: center;
+      }
+      main form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      main input {
+        color: antiquewhite;
+        margin: 0;
+        background: transparent;
+        border-width: 0 0 2px 0;
+      }
+
+      main div > p {
+        margin: 0;
+        margin-top: 3px;
+        margin-bottom: 3px;
+      }
+      main h1 {
+        font-size: 3rem;
+      }
+      main div {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      main button {
+        background: transparent;
+        margin: 30px;
+        width: fit-content;
+        height: fit-content;
+        font-size: 2rem;
+      }
+      a {
+        all: unset;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo-holder">
+          <h1><strong>Aadi's World</strong></h1>
+        </div>
+        <ul>
+          <li><a href="../home.html">Home</a></li>
+          <li><a href="../more.html">More</a></li>
+          <li><a href="./login.html">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <form action="login.php" method="post">
+        <h1>Login!</h1>
+        <div id="h-uname">
+          <p>Username</p>
+          <input type="text" name="userName" id="inp-uname" />
+        </div>
+        <div id="h-pwd">
+          <p>Password</p>
+          <input type="password" name="pwd" id="inp-pwd" />
+        </div>
+        <button type="submit">Login</button>
+        <small>Dont have an account? <a href="./signup.html">SignUp!</a></small>
+      </form>
+    </main>
+    <script>
+      document.getElementById("inp-wname").addEventListener("click", () => {});
+    </script>
+  </body>
+</html>
