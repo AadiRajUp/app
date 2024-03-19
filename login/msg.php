@@ -32,22 +32,19 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    $sql = "SELECT * FROM table1";
+    $sql = "SELECT username, message FROM table2";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
       echo '<table border="1">';
-      echo '<tr><th>ID</th><th>First Name</th><th>Age</th><th>Sex</th><th>Username</th><th>Password</th></tr>';
+      echo '<tr><th>Username</th><th>Message</th></tr>';
       while ($row = $result->fetch_assoc()) {
         echo '<tr>';
-        echo '<td>' . $row['id'] . '</td>';
-        echo '<td>' . $row['fname'] . '</td>';
-        echo '<td>' . $row['age'] . '</td>';
-        echo '<td>' . $row['sex'] . '</td>';
-        echo '<td>' . $row['uname'] . '</td>';
-        echo '<td>' . $row['pass'] . '</td>';
+        echo '<td>' . $row['username'] . '</td>';
+        echo '<td>' . $row['message'] . '</td>';
         echo '</tr>';
       }
       echo '</table>';
+      
     } else {
       echo '0 results';
     }

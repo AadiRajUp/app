@@ -11,7 +11,7 @@ if ($a === '' || $b === '' || $c === '' || $d === '' || $e === '' || $f === '') 
   $username = 'aadi';
   $password = '';
   $host = 'localhost';
-  $db = 'aadi';
+  $db = 'aadi1';
 
   $conn = new mysqli($host, $username, $password, $db);
   if ($conn->connect_error) {

@@ -10,6 +10,7 @@
         font-size: 1.2rem;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
       }
+
       body {
         color: wheat;
         background: rgb(239, 1, 16);
@@ -25,10 +26,14 @@
         width: 100%;
         height: 100dvh;
       }
+      header {
+        /*         position: absolute; */
+      }
       main {
+        /*         position: absolute;
+ */
         display: grid;
-        align-content: center;
-        justify-items: center;
+        justify-content: center;
       }
       main form {
         display: flex;
@@ -48,18 +53,18 @@
         margin-bottom: 3px;
       }
       main h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
       }
       main div {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 15px;
+        margin-bottom: 15px;
       }
       main button {
         background: transparent;
-        margin: 30px;
+        margin: 25px;
         width: fit-content;
         height: fit-content;
-        font-size: 2rem;
+        font-size: 1.7rem;
       }
       a {
         all: unset;
@@ -75,13 +80,13 @@
         <ul>
           <li><a href="../home.html">Home</a></li>
           <li><a href="../more.html">More</a></li>
-          <li><a href="./login.html">Login</a></li>
+          <li><a href="./login.html">Message Me</a></li>
         </ul>
       </nav>
     </header>
     <main>
       <form action="login.php" method="post">
-        <h1>Login!</h1>
+        <h1>Message Me!</h1>
         <div id="h-uname">
           <p>Username</p>
           <input type="text" name="userName" id="inp-uname" />
@@ -90,7 +95,11 @@
           <p>Password</p>
           <input type="password" name="pwd" id="inp-pwd" />
         </div>
-        <button type="submit">Login</button>
+        <div id="h-msg">
+          <p>Message</p>
+          <input type="text" name="msg" id="inp-msg" />
+        </div>
+        <button type="submit">Send!</button>
         <small>Dont have an account? <a href="./signup.html">SignUp!</a></small>
       </form>
     </main>
